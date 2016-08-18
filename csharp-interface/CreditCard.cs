@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace csharp_interface
 {
-    class CreditCard : IPay, IComparable, IEquatable<string>
+    class CreditCard : IPay, IComparable, IEquatable<string>, IEquatable<int>
     {
         private string _number;
 
@@ -51,9 +51,23 @@ namespace csharp_interface
             return -1;
         }
 
+        /// <summary>
+        /// Comparison for text variables
+        /// </summary>
+        /// <param name="other">string value to be compared</param>
+        /// <returns></returns>
         public bool Equals(string other)
         {
             return this.Number.Equals(other);
+        }
+        /// <summary>
+        /// Comparison for numeric variables
+        /// </summary>
+        /// <param name="other">integer value to be compared</param>
+        /// <returns></returns>
+        public bool Equals(int other)
+        {
+            return this.Number[0] == other;
         }
     }
 }
